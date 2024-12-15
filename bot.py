@@ -16,7 +16,7 @@ bot_token = "7701589300:AAG-64FpYOaXkH1OnTXgD08Fk84j4A3dwp4"  # استبدل ب�
 # تشغيل البوت
 app = Client("downloader_bot", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
 
-thumbnail_path = r"C:\Users\majds\Downloads\photo_2024-11-09_19-12-35 (1).jpg"  # مسار الصورة المصغّرة
+thumbnail_path = r"/sec/root/photo_2024-11-09_19-02-45.jpg"  # مسار الصورة المصغّرة
 
 # متغيرات عالمية
 user_headers = {}
@@ -35,7 +35,7 @@ async def safe_edit_message(message, text):
         await message.edit(text)
 
 # دالة لإنشاء شريط التقدم
-def generate_progress_bar(percent, total_bars=20, symbol="⭐", completed_symbol="✅"):
+def generate_progress_bar(percent, total_bars=10, symbol="🚀", completed_symbol="✅"):
     """إنشاء شريط تقدم دقيق يتأكد من اكتمال الرموز عند 100%"""
     completed = int(percent / (100 / total_bars))
     remaining = total_bars - completed
@@ -159,7 +159,7 @@ async def handle_text(client, message):
                 output = process.stdout.readline()
                 if output == "" and process.poll() is not None:
                     break
-                if output and time.time() - last_update_time >= 5:
+                if output and time.time() - last_update_time >= 3:
                     match = re.search(r'(\d+(\.\d+)?%) of ~\s*([\d.]+[A-Za-z]+) at\s*([\d.]+[A-Za-z]+/s) ETA (\d{2}:\d{2})', output)
                     if match:
                         percent = float(match.group(1).strip('%'))
@@ -244,5 +244,6 @@ async def upload_with_progress(client, progress_message, file_path, caption, dur
 
 # بدء تشغيل البوت
 if __name__ == "__main__":
+    PORT = int(os.environ.get("PORT", 8080))  # استخدم المنفذ 8080 كإعداد افتراضي
     print("Bot is running...")
-    app.run()
+    app.run(host="0.0.0.0", port=PORT)
