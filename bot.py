@@ -16,7 +16,7 @@ bot_token = "7701589300:AAG-64FpYOaXkH1OnTXgD08Fk84j4A3dwp4"  # استبدل ب�
 # تشغيل البوت
 app = Client("downloader_bot", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
 
-thumbnail_path = r"/dataphoto/photo_2024-11-09_19-02-45.jpg"  # مسار الصورة المصغّرة
+thumbnail_path = r"/dataphoto/photo.jpg"  # مسار الصورة المصغّرة
 
 # متغيرات عالمية
 user_headers = {}
